@@ -6,11 +6,11 @@ const Weather = () => {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
     const apiKey = '0d7dc2eab54f68ab85c854b33a2afe0d'; 
-    const city = 'Karachi'; 
+    const city = 'Islamabad'; 
 
     const fetchWeather = async () => {
         try {
-            const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=Karachi,pk&APPID=0d7dc2eab54f68ab85c854b33a2afe0d
+            const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=Islamabad,pk&APPID=0d7dc2eab54f68ab85c854b33a2afe0d
 `);
             setWeather(response.data);
             setError(null);
@@ -40,6 +40,7 @@ const Weather = () => {
                 <div>
                     <p className="App-paragraph">City: {weather.name}</p>
                     <p className="App-paragraph">Temperature: {kelvinToCelsius(weather.main.temp)}°C</p>
+                    <p className='App-paragraph'>Weather: {weather.weather[0].description}</p>
                 </div>
             ) : (
                 <p className="App-paragraph">Loading...</p>
